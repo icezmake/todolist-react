@@ -1,7 +1,6 @@
 import * as React from 'react';
 import ReactDom from 'react-dom';
 import List from './list';
-import Input from './input';
 import Header from './header';
 
 export default class App extends React.Component<any, any>{
@@ -42,11 +41,21 @@ export default class App extends React.Component<any, any>{
         })
     }
 
+    deleteJob(index){
+        this.state.todo.splice(index,1);
+        var cp = this.state.todo;
+        var dp = this.state.done;
+        this.setState({
+            todo:cp,
+            done:dp
+        })
+    }
+
     render() {
         return (
             <div>
                 <Header addTodo={this.addTodo.bind(this)} />
-                <List Todo={this.state.todo}  Done={this.state.done} dtd = {this.doneJob.bind(this)}/>
+                <List Todo={this.state.todo}  Done={this.state.done}  delet={this.deleteJob.bind(this)} dtd = {this.doneJob.bind(this)}/>
             </div>
         );
     }

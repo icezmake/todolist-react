@@ -22,6 +22,10 @@ export default class List extends React.Component<any, any>{
         this.props.dtd(index);
     }
 
+    deleteItem(index){
+        this.props.delet(index);
+    }
+
     render() {
         let todolist = this.state.todoList;
         let donelist = this.state.doneList;
@@ -30,7 +34,7 @@ export default class List extends React.Component<any, any>{
             <div>
                 <h2>待办事项</h2>
                 <ul>
-                    {todolist.map((x, i) => <Item key={i} cv={this.changeValue.bind(this)} user={x} index={i} />)}
+                    {todolist.map((x, i) => <Item key={i} cv={this.changeValue.bind(this)} di={this.deleteItem.bind(this)}user={x} index={i} />)}
                 </ul>
                 <h2>完成事项</h2>
                 <ul>

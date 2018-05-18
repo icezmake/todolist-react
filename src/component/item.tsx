@@ -7,15 +7,21 @@ export default class Item extends React.Component<any,any>{
         //console.log(this.props.index);
         this.props.cv(this.props.index);
     }
+
+    deleteItem(){
+        this.props.di(this.props.index);
+    }
     
     render(){
         //console.log(this.props.index);
         if(this.props.user.stat == "todo"){
             return (
                 <li>
-                    <button onClick = {this.changeState.bind(this)}>完成{this.props.index}</button>
                     <span>标题: {this.props.user.title}</span>
                     &nbsp;<span>状态: {this.props.user.stat}</span>
+                    <button onClick = {this.changeState.bind(this)}>完成</button>
+                    <button onClick = {this.deleteItem.bind(this)}>删除</button>
+
                 </li>
             )
         }else{
